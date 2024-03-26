@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Admission_test_registration</title>
+    <link rel="icon" href="~/Images/iconS.jpg"/>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/images.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/forms.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/table.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/headLines.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/buttons.css" asp-append-version="true"/>
+    <link rel="stylesheet" href="~/Admission_test_registration.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        <nav style="padding-bottom:0px; margin-bottom: 0px; padding-top:1px" class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                <ul style="font-family:'Franklin Gothic'; font-size:20px; padding-left:1em" class="navbar-nav flex-grow-1">
+                    <li class="nav-item">
+                        <a style="padding-bottom:0px; margin-bottom: 0px" class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"><p style="text-align:center; padding-bottom:0px; margin-bottom: 0px"><img width="32px" src="~/Images/home.png"></p>&nbsp;Exam Register</a>
+                    </li>
+                    <li class="nav-item">
+                        <a style="padding-bottom:0px; margin-bottom: 0px" class="navbar-brand" asp-area="" asp-controller="Student" asp-action="Index"><p style="text-align:center; padding-bottom:0px; margin-bottom: 0px"><img width="32px" src="~/Images/students.png"></p>&nbsp;&nbsp; Students</a>
+                    </li>
+                    <li class="nav-item">
+                        <a style="padding-bottom:0px; margin-bottom: 0px" class="navbar-brand" asp-area="" asp-controller="Student" asp-action="Create"><p style="text-align:center; padding-bottom:0px; margin-bottom: 0px"><img width="32px" src="~/Images/addSt.png"></p>&nbsp;&nbsp;&nbsp; Add Student</a>
+                    </li>
+                    <li class="nav-item">
+                        <a style="padding-bottom:0px; margin-bottom: 0px" class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Map"><p style="text-align:center; padding-bottom:0px; margin-bottom: 0px"><img width="32px" src="~/Images/map.png"></p> &nbsp;&nbsp;&nbsp;Map</a>
+                    </li>
+                    <li class="nav-item">
+                        <a style="padding-bottom:0px; margin-bottom: 0px" class="navbar-brand" asp-area="" asp-controller="Home" asp-action="About"><p style="text-align:center; padding-bottom:0px; margin-bottom: 0px"><img width="32px" src="~/Images/about.png"></p>&nbsp;&nbsp;&nbsp;About</a>
+                    </li>
+                    
+                </ul>
+            </div>
+
+        </nav>
+        
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2024 - Admission test registration project. - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

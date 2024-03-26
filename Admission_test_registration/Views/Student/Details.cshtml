@@ -1,0 +1,158 @@
+﻿@model Admission_test_registration.Models.StudentFull
+
+@{
+    ViewData["Title"] = "Student Profile";
+}
+
+<h1>Student №@Model.Student.StudentId</h1>
+
+<div style="display: flex;">
+    <div style="flex: 1;">
+        <details open>
+            <summary><h3>Student Information</h3></summary>
+            <p><strong>Name:</strong> @Model.Student.Name</p>
+            <p><strong>Date of Birth:</strong> @Model.Student.DateOfBirth.ToString()</p>
+            <p><strong>Sex:</strong> @Model.Student.Sex</p>
+            <p><strong>Adress:</strong> @Model.Student.Adress</p>
+            <h4>Contacts</h4>
+            <p><strong>Tel. Number:</strong> @Model.Student.telNumber</p>
+            <p><strong>Email:</strong> @Model.Student.Email</p>
+            <form asp-action="Edit" asp-controller="Student" method="get">
+                <input type="hidden" name="id" value="@Model.Student.StudentId">
+                <input type="submit" value="Edit Profile" class="btn btn-primary" />
+            </form>
+            <form asp-action="DeletePostMethod" method="post">
+                <script src="~/js/ToggleButton.js"></script>
+                <input type="hidden" name="id" value="@Model.Student.StudentId">
+                <label><i>Please confirm,<br> if you would like to delete your profile</i></label>
+                <input type="checkbox" id="DeleteProfileCheck" onchange="ToggleButton('DeleteProfileCheck', 'DeleteProfileButton')">
+                <input type="submit" id="DeleteProfileButton" value="Delete Profile" class="btn btn-primary" disabled />
+            </form>
+        </details>
+    </div>
+
+    <div style="flex: 1;">
+        @if (Model.Certificate == null)
+        {
+            <p><strong>High School Certificate not found</strong></p>
+            <form asp-action="Create" asp-controller="Certificate" method="get">
+                <input type="hidden" name="studentId" value="@Model.Student.StudentId">
+                <input type="submit" value="Add Certificate" class="btn btn-primary"/>
+            </form>
+            @* <a asp-controller="Certificate" asp-action="Create" asp-route-id="@Model.Student.StudentId" class="btn btn-primary">Add Certificate</a> *@
+        }
+        else
+        {
+            <details open>
+                <summary><h3>High School Certificate №@Model.Certificate.CertificateId</h3></summary>
+                <p><strong>Recieve Date:</strong> @Model.Certificate.ReceiveDate</p>
+                <p><strong>Educator:</strong> @Model.Certificate.Educator.Name</p>
+                <p><strong>Educator Email:</strong> @Model.Certificate.Educator.Email</p>
+            
+                <h4>Grades</h4>
+                
+                <p><strong>Math Grade:</strong> @Model.Certificate.MathGrade</p>
+                <p><strong>English Grade:</strong> @Model.Certificate.EnglishGrade</p>
+                <p><strong>History Grade:</strong> @Model.Certificate.HistoryGrade</p>
+
+                @if (Model.Certificate.SocialActivity){
+                    <p><strong>Social Activity:</strong> Сonfirmed </p> }
+                else{
+                    <p><strong>Social Activity:</strong> Not Confirmed </p> }
+
+                @if (Model.Certificate.CompetitionActivity){
+                    <p><strong>Science Competition Activity:</strong> Сonfirmed </p> }
+                else{
+                    <p><strong>Science Competition Activity:</strong> Not Confirmed </p> }
+
+                @if (Model.Certificate.SportActivity){
+                    <p><strong>Student Sport Activity:</strong> Сonfirmed </p> }
+                else{
+                    <p><strong>Student Sport Activity:</strong> Not Confirmed </p> }
+
+                <form asp-action="Edit" asp-controller="Certificate" method="get">
+                    <input type="hidden" name="id" value="@Model.Student.StudentId">
+                    <input type="submit" value="Edit Certificate" class="btn btn-primary" />
+                </form>
+            </details>
+        }
+    </div>
+    <div style="flex: 1;">
+        @if (Model.RegistrationSheet == null)
+        {
+            <p><strong>Registration Sheet for the Entrance Examination not found</strong></p>
+            <form asp-action="Create" asp-controller="RegistrationSheet" method="get">
+                <input type="hidden" name="id" value="@Model.Student.StudentId">
+                <input type="submit" value="Registration form" class="btn btn-primary" />
+            </form>
+        }
+        else
+        {
+            <details open>
+                <summary><h3>Registration Sheet №@Model.RegistrationSheet.RegistrationSheetId</h3></summary>
+                <p><strong>Registration Date:</strong> @Model.RegistrationSheet.RegistrationTime.ToString("yyyy-MM-dd HH:mm")</p>
+                <p><strong>University:</strong> @Model.RegistrationSheet.ExamScheduleElement.University.Name</p>
+                <p><strong>Uni. Adress:</strong> @Model.RegistrationSheet.ExamScheduleElement.University.Adress</p>
+                <p><strong>Exam Date:</strong> @Model.RegistrationSheet.ExamScheduleElement.ExamTime.ToString("yyyy-MM-dd HH:mm")</p>
+            
+                <form asp-action="DeletePostMethod" asp-controller="RegistrationSheet" method="post">
+                    <script src="~/js/ToggleButton.js"></script>
+                    <input type="hidden" name="id" value="@Model.RegistrationSheet.RegistrationSheetId">
+                    <label><i>Please confirm,<br> if you would like to remove your registration</i></label>
+                    <input type="checkbox" id="DeleteRegistrationCheck" onchange="ToggleButton('DeleteRegistrationCheck', 'DeleteRegistrationButton')">
+                    <input type="submit" id="DeleteRegistrationButton" value="Delete" class="btn btn-primary" disabled />
+                </form>
+            </details>
+        }
+
+    </div>
+</div>
+
+<div id="forML">
+    @if (Model.Certificate != null && Model.RegistrationSheet != null)
+    {
+        <details>
+            <summary><h3>Use AI methods to predict your possible exam score based on certificate</h3></summary>
+            <input type="hidden" id="studentId" value="@Model.Student.StudentId" />
+            <input value="Ask AI" id="PredictButton" type="submit" class="btn btn-primary" />
+            <div style="display:flex;">
+                <div style="flex:1;" id="Predict"></div>
+                <div style="flex:1;" id="Predict">
+                    <img width="50%" height="90%" alt="Just Picture" src="~/Images/ai.png">
+                </div>
+            </div>
+            
+        </details> 
+    }
+</div>
+
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            // Handle button click event
+            $("#PredictButton").click(function () {
+                // Get the studentId from the hidden input field
+                var studentId = $("#studentId").val();
+
+                // Perform AJAX request to reload the partial view
+                $.ajax({
+                    url: "@Url.Action("PredictGrade", "Student")",
+                    type: "POST",
+                    data: { studentId: studentId }, 
+                    success: function (data) {
+                        
+                        $("#Predict").html(data);
+                    },
+                    error: function () {
+                        // Handle error
+                        alert("Service is unabled for now");
+                    }
+                });
+            });
+        });
+    </script>
+}
+
+
+

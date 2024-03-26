@@ -1,0 +1,14 @@
+﻿/*.submitAddSave {
+    font-size: 20px;
+    font-family: cursive;
+    background-color: #00e7ff;
+    border-width: 3px 3px 3px 1.5px;
+    border-style: solid;
+    border-color: #26267b rgb(17, 5, 184) rgb(17, 5, 184) blue;
+    margin-bottom: 1%;
+    color:white;
+}*/
+
+.submitAddSave:hover {
+    background-color: #52bd94;
+}

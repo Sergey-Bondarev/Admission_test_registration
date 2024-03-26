@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Admission_test_registration.Models.Student>
+
+@{
+    ViewData["Title"] = "List of Students";
+}
+
+<h1>List of Students</h1>
+
+<p id="topPhrase">
+    Students in university are the architects of their own futures, designing their paths with knowledge and ambition.
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table" id="tabl">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.telNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Adress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sex)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.telNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Adress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sex)
+            </td>
+            <td>
+                <a id="moreInfoLink" asp-action="Details" asp-route-id="@item.StudentId">to Profile =></a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<script src="~/js/Table.js"> </script>

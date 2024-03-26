@@ -1,0 +1,579 @@
+﻿{
+  "Scenario": "Regression",
+  "DataSource": {
+    "Type": "TabularFile",
+    "Version": 1,
+    "FilePath": "C:\\Users\\Sergey\\Data point\\Coding\\Projects\\C#\\Admission_test_registration\\Admission_test_registration\\Data\\exam_score_pred.csv",
+    "Delimiter": ",",
+    "DecimalMarker": ".",
+    "HasHeader": true,
+    "ColumnProperties": [
+      {
+        "ColumnName": "ID",
+        "ColumnPurpose": "Ignore",
+        "ColumnDataFormat": "Single",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 4
+      },
+      {
+        "ColumnName": "Sex",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "String",
+        "IsCategorical": true,
+        "Type": "Column",
+        "Version": 4
+      },
+      {
+        "ColumnName": "Math_Grade",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "Single",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 4
+      },
+      {
+        "ColumnName": "History_Grade",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "Single",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 4
+      },
+      {
+        "ColumnName": "English_Grade",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "Single",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 4
+      },
+      {
+        "ColumnName": "Social_Activity",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "Boolean",
+        "IsCategorical": true,
+        "Type": "Column",
+        "Version": 4
+      },
+      {
+        "ColumnName": "Science_Competition_Activity",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "Boolean",
+        "IsCategorical": true,
+        "Type": "Column",
+        "Version": 4
+      },
+      {
+        "ColumnName": "Sport_Activity",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "Boolean",
+        "IsCategorical": true,
+        "Type": "Column",
+        "Version": 4
+      },
+      {
+        "ColumnName": "University Entrance Exam Grade",
+        "ColumnPurpose": "Label",
+        "ColumnDataFormat": "Single",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 4
+      }
+    ]
+  },
+  "Environment": {
+    "Type": "LocalCPU",
+    "Version": 1
+  },
+  "RunHistory": {
+    "Version": 3,
+    "Type": "Result",
+    "Trials": [
+      {
+        "Version": 1,
+        "Type": "Trial",
+        "TrainerName": "SdcaRegression",
+        "Score": 3.1861091046689345,
+        "RuntimeInSeconds": 12.521,
+        "Parameter": {
+          "_SCHEMA_": "e0 * e1 * e2 * e7",
+          "e0": {
+            "OutputColumnNames": [
+              "Sex",
+              "Social_Activity",
+              "Science_Competition_Activity",
+              "Sport_Activity"
+            ],
+            "InputColumnNames": [
+              "Sex",
+              "Social_Activity",
+              "Science_Competition_Activity",
+              "Sport_Activity"
+            ]
+          },
+          "e1": {
+            "OutputColumnNames": [
+              "Math_Grade",
+              "History_Grade",
+              "English_Grade"
+            ],
+            "InputColumnNames": [
+              "Math_Grade",
+              "History_Grade",
+              "English_Grade"
+            ]
+          },
+          "e2": {
+            "InputColumnNames": [
+              "Sex",
+              "Social_Activity",
+              "Science_Competition_Activity",
+              "Sport_Activity",
+              "Math_Grade",
+              "History_Grade",
+              "English_Grade"
+            ],
+            "OutputColumnName": "Features"
+          },
+          "e7": {
+            "L1Regularization": 0.03125,
+            "L2Regularization": 0.03125,
+            "LabelColumnName": "University Entrance Exam Grade",
+            "FeatureColumnName": "Features"
+          },
+          "e3": {
+            "NumberOfLeaves": 4,
+            "MinimumExampleCountPerLeaf": 20,
+            "NumberOfTrees": 4,
+            "MaximumBinCountPerFeature": 255,
+            "FeatureFraction": 1.0,
+            "LearningRate": 0.099999999999999978,
+            "LabelColumnName": "University Entrance Exam Grade",
+            "FeatureColumnName": "Features"
+          },
+          "e4": {
+            "NumberOfTrees": 4,
+            "NumberOfLeaves": 4,
+            "FeatureFraction": 1.0,
+            "LabelColumnName": "University Entrance Exam Grade",
+            "FeatureColumnName": "Features"
+          },
+          "e5": {
+            "NumberOfLeaves": 4,
+            "MinimumExampleCountPerLeaf": 20,
+            "LearningRate": 1.0,
+            "NumberOfTrees": 4,
+            "SubsampleFraction": 1.0,
+            "MaximumBinCountPerFeature": 255,
+            "FeatureFraction": 1.0,
+            "L1Regularization": 2E-10,
+            "L2Regularization": 1.0,
+            "LabelColumnName": "University Entrance Exam Grade",
+            "FeatureColumnName": "Features"
+          },
+          "e6": {
+            "L1Regularization": 1.0,
+            "L2Regularization": 1.0,
+            "LabelColumnName": "University Entrance Exam Grade",
+            "FeatureColumnName": "Features"
+          }
+        }
+      },
+      {
+        "Version": 1,
+        "Type": "Trial",
+        "TrainerName": "SdcaRegression",
+        "Score": 3.1918372648287394,
+        "RuntimeInSeconds": 9.52,
+        "Parameter": {
+          "_SCHEMA_": "e0 * e1 * e2 * e7",
+          "e0": {
+            "OutputColumnNames": [
+              "Sex",
+              "Social_Activity",
+              "Science_Competition_Activity",
+              "Sport_Activity"
+            ],
+            "InputColumnNames": [
+              "Sex",
+              "Social_Activity",
+              "Science_Competition_Activity",
+              "Sport_Activity"
+            ]
+          },
+          "e1": {
+            "OutputColumnNames": [
+              "Math_Grade",
+              "History_Grade",
+              "English_Grade"
+            ],
+            "InputColumnNames": [
+              "Math_Grade",
+              "History_Grade",
+              "English_Grade"
+            ]
+          },
+          "e2": {
+            "InputColumnNames": [
+              "Sex",
+              "Social_Activity",
+              "Science_Competition_Activity",
+              "Sport_Activity",
+              "Math_Grade",
+              "History_Grade",
+              "English_Grade"
+            ],
+            "OutputColumnName": "Features"
+          },
+          "e7": {
+            "L1Regularization": 0.0648963451,
+            "L2Regularization": 0.03125,
+            "LabelColumnName": "University Entrance Exam Grade",
+            "FeatureColumnName": "Features"
+          },
+          "e3": {
+            "NumberOfLeaves": 4,
+            "MinimumExampleCountPerLeaf": 20,
+            "NumberOfTrees": 4,
+            "MaximumBinCountPerFeature": 255,
+            "FeatureFraction": 1.0,
+            "LearningRate": 0.099999999999999978,
+            "LabelColumnName": "University Entrance Exam Grade",
+            "FeatureColumnName": "Features"
+          },
+          "e4": {
+            "NumberOfTrees": 4,
+            "NumberOfLeaves": 4,
+            "FeatureFraction": 1.0,
+            "LabelColumnName": "University Entrance Exam Grade",
+            "FeatureColumnName": "Features"
+          },
+          "e5": {
+            "NumberOfLeaves": 4,
+            "MinimumExampleCountPerLeaf": 20,
+            "LearningRate": 1.0,
+            "NumberOfTrees": 4,
+            "SubsampleFraction": 1.0,
+            "MaximumBinCountPerFeature": 255,
+            "FeatureFraction": 1.0,
+            "L1Regularization": 2E-10,
+            "L2Regularization": 1.0,
+            "LabelColumnName": "University Entrance Exam Grade",
+            "FeatureColumnName": "Features"
+          },
+          "e6": {
+            "L1Regularization": 1.0,
+            "L2Regularization": 1.0,
+            "LabelColumnName": "University Entrance Exam Grade",
+            "FeatureColumnName": "Features"
+          }
+        }
+      },
+      {
+        "Version": 1,
+        "Type": "Trial",
+        "TrainerName": "SdcaRegression",
+        "Score": 3.1996523429101607,
+        "RuntimeInSeconds": 11.364,
+        "Parameter": {
+          "_SCHEMA_": "e0 * e1 * e2 * e7",
+          "e0": {
+            "OutputColumnNames": [
+              "Sex",
+              "Social_Activity",
+              "Science_Competition_Activity",
+              "Sport_Activity"
+            ],
+            "InputColumnNames": [
+              "Sex",
+              "Social_Activity",
+              "Science_Competition_Activity",
+              "Sport_Activity"
+            ]
+          },
+          "e1": {
+            "OutputColumnNames": [
+              "Math_Grade",
+              "History_Grade",
+              "English_Grade"
+            ],
+            "InputColumnNames": [
+              "Math_Grade",
+              "History_Grade",
+              "English_Grade"
+            ]
+          },
+          "e2": {
+            "InputColumnNames": [
+              "Sex",
+              "Social_Activity",
+              "Science_Competition_Activity",
+              "Sport_Activity",
+              "Math_Grade",
+              "History_Grade",
+              "English_Grade"
+            ],
+            "OutputColumnName": "Features"
+          },
+          "e7": {
+            "L1Regularization": 0.03125,
+            "L2Regularization": 0.03125,
+            "LabelColumnName": "University Entrance Exam Grade",
+            "FeatureColumnName": "Features"
+          },
+          "e3": {
+            "NumberOfLeaves": 4,
+            "MinimumExampleCountPerLeaf": 20,
+            "NumberOfTrees": 4,
+            "MaximumBinCountPerFeature": 255,
+            "FeatureFraction": 1.0,
+            "LearningRate": 0.099999999999999978,
+            "LabelColumnName": "University Entrance Exam Grade",
+            "FeatureColumnName": "Features"
+          },
+          "e4": {
+            "NumberOfTrees": 4,
+            "NumberOfLeaves": 4,
+            "FeatureFraction": 1.0,
+            "LabelColumnName": "University Entrance Exam Grade",
+            "FeatureColumnName": "Features"
+          },
+          "e5": {
+            "NumberOfLeaves": 4,
+            "MinimumExampleCountPerLeaf": 20,
+            "LearningRate": 1.0,
+            "NumberOfTrees": 4,
+            "SubsampleFraction": 1.0,
+            "MaximumBinCountPerFeature": 255,
+            "FeatureFraction": 1.0,
+            "L1Regularization": 2E-10,
+            "L2Regularization": 1.0,
+            "LabelColumnName": "University Entrance Exam Grade",
+            "FeatureColumnName": "Features"
+          },
+          "e6": {
+            "L1Regularization": 1.0,
+            "L2Regularization": 1.0,
+            "LabelColumnName": "University Entrance Exam Grade",
+            "FeatureColumnName": "Features"
+          }
+        }
+      },
+      {
+        "Version": 1,
+        "Type": "Trial",
+        "TrainerName": "LightGbmRegression",
+        "Score": 3.2117462123613363,
+        "RuntimeInSeconds": 4.015,
+        "Parameter": {
+          "_SCHEMA_": "e0 * e1 * e2 * e5",
+          "e0": {
+            "OutputColumnNames": [
+              "Sex",
+              "Social_Activity",
+              "Science_Competition_Activity",
+              "Sport_Activity"
+            ],
+            "InputColumnNames": [
+              "Sex",
+              "Social_Activity",
+              "Science_Competition_Activity",
+              "Sport_Activity"
+            ]
+          },
+          "e1": {
+            "OutputColumnNames": [
+              "Math_Grade",
+              "History_Grade",
+              "English_Grade"
+            ],
+            "InputColumnNames": [
+              "Math_Grade",
+              "History_Grade",
+              "English_Grade"
+            ]
+          },
+          "e2": {
+            "InputColumnNames": [
+              "Sex",
+              "Social_Activity",
+              "Science_Competition_Activity",
+              "Sport_Activity",
+              "Math_Grade",
+              "History_Grade",
+              "English_Grade"
+            ],
+            "OutputColumnName": "Features"
+          },
+          "e5": {
+            "NumberOfLeaves": 4,
+            "MinimumExampleCountPerLeaf": 20,
+            "LearningRate": 0.99999977667298645,
+            "NumberOfTrees": 1038,
+            "SubsampleFraction": 0.27737954152534927,
+            "MaximumBinCountPerFeature": 217,
+            "FeatureFraction": 0.92036196084710464,
+            "L1Regularization": 2.518644213322384E-09,
+            "L2Regularization": 0.99999977667298645,
+            "LabelColumnName": "University Entrance Exam Grade",
+            "FeatureColumnName": "Features"
+          },
+          "e3": {
+            "NumberOfLeaves": 4,
+            "MinimumExampleCountPerLeaf": 20,
+            "NumberOfTrees": 4,
+            "MaximumBinCountPerFeature": 255,
+            "FeatureFraction": 1.0,
+            "LearningRate": 0.099999999999999978,
+            "LabelColumnName": "University Entrance Exam Grade",
+            "FeatureColumnName": "Features"
+          },
+          "e4": {
+            "NumberOfTrees": 4,
+            "NumberOfLeaves": 4,
+            "FeatureFraction": 1.0,
+            "LabelColumnName": "University Entrance Exam Grade",
+            "FeatureColumnName": "Features"
+          },
+          "e6": {
+            "L1Regularization": 1.0,
+            "L2Regularization": 1.0,
+            "LabelColumnName": "University Entrance Exam Grade",
+            "FeatureColumnName": "Features"
+          },
+          "e7": {
+            "L1Regularization": 1.0,
+            "L2Regularization": 0.1,
+            "LabelColumnName": "University Entrance Exam Grade",
+            "FeatureColumnName": "Features"
+          }
+        }
+      },
+      {
+        "Version": 1,
+        "Type": "Trial",
+        "TrainerName": "SdcaRegression",
+        "Score": 3.227795031461731,
+        "RuntimeInSeconds": 9.687,
+        "Parameter": {
+          "_SCHEMA_": "e0 * e1 * e2 * e7",
+          "e0": {
+            "OutputColumnNames": [
+              "Sex",
+              "Social_Activity",
+              "Science_Competition_Activity",
+              "Sport_Activity"
+            ],
+            "InputColumnNames": [
+              "Sex",
+              "Social_Activity",
+              "Science_Competition_Activity",
+              "Sport_Activity"
+            ]
+          },
+          "e1": {
+            "OutputColumnNames": [
+              "Math_Grade",
+              "History_Grade",
+              "English_Grade"
+            ],
+            "InputColumnNames": [
+              "Math_Grade",
+              "History_Grade",
+              "English_Grade"
+            ]
+          },
+          "e2": {
+            "InputColumnNames": [
+              "Sex",
+              "Social_Activity",
+              "Science_Competition_Activity",
+              "Sport_Activity",
+              "Math_Grade",
+              "History_Grade",
+              "English_Grade"
+            ],
+            "OutputColumnName": "Features"
+          },
+          "e7": {
+            "L1Regularization": 1.0,
+            "L2Regularization": 0.1,
+            "LabelColumnName": "University Entrance Exam Grade",
+            "FeatureColumnName": "Features"
+          },
+          "e3": {
+            "NumberOfLeaves": 4,
+            "MinimumExampleCountPerLeaf": 20,
+            "NumberOfTrees": 4,
+            "MaximumBinCountPerFeature": 255,
+            "FeatureFraction": 1.0,
+            "LearningRate": 0.099999999999999978,
+            "LabelColumnName": "University Entrance Exam Grade",
+            "FeatureColumnName": "Features"
+          },
+          "e4": {
+            "NumberOfTrees": 4,
+            "NumberOfLeaves": 4,
+            "FeatureFraction": 1.0,
+            "LabelColumnName": "University Entrance Exam Grade",
+            "FeatureColumnName": "Features"
+          },
+          "e5": {
+            "NumberOfLeaves": 4,
+            "MinimumExampleCountPerLeaf": 20,
+            "LearningRate": 1.0,
+            "NumberOfTrees": 4,
+            "SubsampleFraction": 1.0,
+            "MaximumBinCountPerFeature": 255,
+            "FeatureFraction": 1.0,
+            "L1Regularization": 2E-10,
+            "L2Regularization": 1.0,
+            "LabelColumnName": "University Entrance Exam Grade",
+            "FeatureColumnName": "Features"
+          },
+          "e6": {
+            "L1Regularization": 1.0,
+            "L2Regularization": 1.0,
+            "LabelColumnName": "University Entrance Exam Grade",
+            "FeatureColumnName": "Features"
+          }
+        }
+      }
+    ],
+    "Estimators": {
+      "e0": "OneHotEncoding",
+      "e1": "ReplaceMissingValues",
+      "e2": "Concatenate",
+      "e3": "FastTreeRegression",
+      "e4": "FastForestRegression",
+      "e5": "LightGbmRegression",
+      "e6": "LbfgsPoissonRegressionRegression",
+      "e7": "SdcaRegression"
+    },
+    "Schema": "e0 * e1 * e2 * (e3 + e4 + e5 + e6 + e7)",
+    "MetricName": "RootMeanSquaredError",
+    "ModelFilePath": "C:\\Users\\Sergey\\Data point\\Coding\\Projects\\C#\\Admission_test_registration\\Admission_test_registration\\ExamGradePredictor.mlnet"
+  },
+  "Type": "TrainingConfig",
+  "Version": 4,
+  "TrainingOption": {
+    "Version": 1,
+    "Type": "RegressionTrainingOption",
+    "TrainingTime": 500,
+    "OptimizeMetric": "RMSE",
+    "LabelColumn": "University Entrance Exam Grade",
+    "AvailableTrainers": [
+      "SDCA",
+      "LBFGS",
+      "LGBM",
+      "FASTTREE",
+      "FASTFOREST"
+    ],
+    "ValidationOption": {
+      "Version": 0,
+      "Type": "TrainValidateSplitValidationOption",
+      "SplitRatio": 0.2
+    }
+  }
+}

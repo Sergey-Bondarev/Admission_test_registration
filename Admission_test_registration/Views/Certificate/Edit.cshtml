@@ -1,0 +1,119 @@
+﻿@model Admission_test_registration.Models.Certificate
+
+@{
+    ViewData["Title"] = "Edit Cerf";
+}
+
+<h1>Edit Certificate</h1>
+<p id="topPhrase">In the mosaic of university life, students are the diverse colors, enriching the canvas of academia with their unique perspectives and talents</p>
+<hr />
+
+<h4>Certificate</h4>
+<h4>Of @ViewBag.oldCerf.Student.Name (@ViewBag.oldCerf.StudentId)</h4>
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <select hidden asp-for="StudentId" class="form-control">
+                    <option value="@ViewBag.oldCerf.Student.StudentId">ViewBag.oldCerf.Student.StudentId</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <select hidden asp-for="CertificateId" class="form-control">
+                    <option value="@ViewBag.oldCerf.CertificateId">ViewBag.oldCerf.CertificateId</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="EducatorId" class="control-label">Educator</label>
+                <select asp-for="EducatorId" class="form-control" asp-items="ViewBag.EducatorId">
+                    <option value="@ViewBag.oldCerf.EducatorId">@ViewBag.oldCerf.Educator.Name - @ViewBag.oldCerf.Educator.Email</option>
+                    @foreach (var edu in ViewBag.Educators)
+                    {
+                        if (edu.EducatorId == ViewBag.oldCerf.EducatorId)
+                            continue;
+
+                        <option value="@edu.EducatorId">@edu.Name - @edu.Email</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="MathGrade" class="control-label">MathGrade</label>
+                <input value="@ViewBag.oldCerf.MathGrade" placeholder="@ViewBag.oldCerf.MathGrade" asp-for="MathGrade" class="form-control" />
+                <span asp-validation-for="MathGrade" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EnglishGrade" class="control-label">English Grade</label>
+                <input value="@ViewBag.oldCerf.EnglishGrade" placeholder="@ViewBag.oldCerf.EnglishGrade" asp-for="EnglishGrade" class="form-control" />
+                <span asp-validation-for="EnglishGrade" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HistoryGrade" class="control-label">History Grade</label>
+                <input value="@ViewBag.oldCerf.HistoryGrade" placeholder="@ViewBag.oldCerf.HistoryGrade" asp-for="HistoryGrade" class="form-control" />
+                <span asp-validation-for="HistoryGrade" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    Social Activity
+                    @if (ViewBag.oldCerf.SocialActivity)
+                    {
+                        <input checked type="checkbox" asp-for="SocialActivity" id="isSelectedCheckbox" />
+                    }
+                    else
+                    {
+                        <input type="checkbox" asp-for="SocialActivity" id="isSelectedCheckbox" />
+                    }
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    Science Competition Activity
+                    @if (ViewBag.oldCerf.CompetitionActivity)
+                    {
+                        <input checked type="checkbox" asp-for="CompetitionActivity" id="isSelectedCheckbox" />
+                    }
+                    else
+                    {
+                        <input type="checkbox" asp-for="CompetitionActivity" id="isSelectedCheckbox" />
+                    }
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    Sport Activity
+                    @if (ViewBag.oldCerf.SportActivity)
+                    {
+                        <input checked type="checkbox" asp-for="SportActivity" id="isSelectedCheckbox"/>
+                    }
+                    else
+                    {
+                        <input type="checkbox" asp-for="SportActivity" id="isSelectedCheckbox" />
+                    }
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="ReceiveDate" class="control-label">Certificate Receive Date</label>
+                <input value="@ViewBag.oldCerf.ReceiveDate.ToString("yyyy-MM-dd")" type="date" asp-for="ReceiveDate" class="form-control" />
+                <span asp-validation-for="ReceiveDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Edit" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <hr />
+    <form asp-controller="Certificate" asp-action="DeletePostMethod" method="post">
+        <script src="~/js/ToggleButton.js"></script>
+        <input type="hidden" name="id" value="@ViewBag.oldCerf.CertificateId">
+        <label><i>Please confirm,<br> if you would like to delete this certificate</i></label>
+        <input type="checkbox" id="DeleteCerfCheck" onchange="ToggleButton('DeleteCerfCheck', 'DeleteCerfButton')">
+        <input type="submit" id="DeleteCerfButton" value="Delete Certificate" class="btn btn-primary" disabled />
+    </form>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,20 @@
+﻿
+@{
+    ViewData["Title"] = "Map";
+}
+
+<link rel="stylesheet" href="~/js/Leaf/leaflet.css"/>
+<link rel="stylesheet" href="~/css/map.css"/>
+<script src="~/js/Leaf/leaflet.js"></script>
+<script src="~/js/Map.js"></script>
+
+<h1>Map with valid for registration universities</h1>
+<p id="topPhrase">As students journey through the roads of higher education, they find signposts of inspiration, rest stops of relaxation, and milestones of achievement.</p>
+<hr />
+<div id="map">
+</div>
+<script>
+    var universities = @Html.Raw(Json.Serialize(ViewBag.Universities));
+    initializeMap(universities);
+</script>
+

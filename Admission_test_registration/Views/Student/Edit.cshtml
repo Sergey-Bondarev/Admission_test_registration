@@ -1,0 +1,62 @@
+﻿@model Admission_test_registration.Models.Student
+
+@{
+    ViewData["Title"] = "Edit Profile";
+}
+
+<h1>Edit Profile</h1>
+<p id="topPhrase">University students are the vanguards of innovation, pioneering new ideas and challenging conventional wisdom.</p>
+<hr />
+<h4>Profile of @ViewBag.OldSt.Name (@ViewBag.OldSt.StudentId)</h4>
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input value="@ViewBag.OldSt.StudentId" type="hidden" asp-for="StudentId" />
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input value="@ViewBag.OldSt.Name" placeholder="@ViewBag.OldSt.Name" asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DateOfBirth" class="control-label"></label>
+                <input value="@ViewBag.OldSt.DateOfBirth.ToString("yyyy-MM-dd")" placeholder="@ViewBag.OldSt.DateOfBirth" type="date" asp-for="DateOfBirth" class="form-control" />
+                <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="telNumber" class="control-label"></label>
+                <input value="@ViewBag.OldSt.telNumber" placeholder="@ViewBag.OldSt.telNumber" asp-for="telNumber" class="form-control" />
+                <span asp-validation-for="telNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input value="@ViewBag.OldSt.Email" placeholder="@ViewBag.OldSt.Email" asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Adress" class="control-label"></label>
+                <input value="@ViewBag.OldSt.Adress" placeholder="@ViewBag.OldSt.Adress" asp-for="Adress" class="form-control" />
+                <span asp-validation-for="Adress" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Sex" class="control-label"></label>
+                <select asp-for="Sex" class="form-control">
+                    <option value="">Select...</option>
+                    @foreach (Sex value in Enum.GetValues(typeof(Sex)))
+                    {
+                        <option value="@value">@value</option>
+                    }
+                </select>
+                <span asp-validation-for="Sex" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,78 @@
+﻿@model Admission_test_registration.Models.Certificate
+
+@{
+    ViewData["Title"] = "Create Cerf";
+}
+
+<h1>Add Certificate</h1>
+
+<p id="topPhrase">In the mosaic of university life, students are the diverse colors, enriching the canvas of academia with their unique perspectives and talents</p>
+<hr />
+<h4>Certificate for @ViewBag.Student.Name (@ViewBag.Student.StudentId)</h4>
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <select hidden asp-for="StudentId" class ="form-control">
+                    <option value="@ViewBag.Student.StudentId"></option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="EducatorId" class="control-label"></label>
+                <select asp-for="EducatorId" class ="form-control">
+                    <option value="">Select educator</option>
+                    @foreach (var edu in ViewBag.Educators)
+                    {
+                        <option value="@edu.EducatorId">@edu.Name - @edu.Email</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="MathGrade" class="control-label">Math Grade</label>
+                <input placeholder="60-100" asp-for="MathGrade" class="form-control" />
+                <span asp-validation-for="MathGrade" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EnglishGrade" class="control-label">English Grade</label>
+                <input placeholder="60-100" asp-for="EnglishGrade" class="form-control" />
+                <span asp-validation-for="EnglishGrade" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HistoryGrade" class="control-label">History Grade</label>
+                <input placeholder="60-100" asp-for="HistoryGrade" class="form-control" />
+                <span asp-validation-for="HistoryGrade" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    Social Activity
+                    <input class="form-check-input" asp-for="SocialActivity" /> @Html.DisplayNameFor(model => model.SocialActivity)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    Science Competition Activity
+                    <input class="form-check-input" asp-for="CompetitionActivity" /> @Html.DisplayNameFor(model => model.CompetitionActivity)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    Sport Activity
+                    <input class="form-check-input" asp-for="SportActivity" /> @Html.DisplayNameFor(model => model.SportActivity)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="ReceiveDate" class="control-label"> Receive Date</label>
+                <input type="date" asp-for="ReceiveDate" class="form-control" />
+                <span asp-validation-for="ReceiveDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

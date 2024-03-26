@@ -1,0 +1,60 @@
+﻿@model Admission_test_registration.Models.RegistrationSheet
+
+@{
+    ViewData["Title"] = "Regisration";
+}
+
+<h1>Registration for the admission exam</h1>
+<p id="topPhrase">Within the academic crucible, students are the alchemists, transforming raw potential into refined intellect.</p>
+<hr />
+<h4>RegistrationSheet</h4>
+<h4>for student @ViewBag.Student.StudentId</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <select hidden asp-for="StudentId" class="form-control">
+                    <option value="@ViewBag.Student.StudentId"></option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="UniversityId" class="control-label">Select University</label>
+                <select id="UniversityId" name="UniversityId" class="form-control">
+                    <option value="">Select</option>
+                    @foreach (var uni in ViewBag.Universities)
+                    {
+                        <option value="@uni.UniversityId">@uni.Name</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="ExamScheduleElementId" class="control-label">Choose possible time</label>
+                <select id="ExamScheduleElementId" asp-for="ExamScheduleElementId" class="form-control" disabled>
+                </select>
+                <span asp-validation-for="ExamScheduleElementId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RegistrationTime" class="control-label"></label>
+                <input type="datetime" hidden value="@DateTime.Now.ToString()" asp-for="RegistrationTime" class="form-control" />
+            </div>
+            <div class="form-group">
+                <input id="Button" type="submit" value="Create" class="btn btn-primary" disabled/>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="~/js/RegistrationForm.js"></script>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script>
+    var shedule = @Html.Raw(ViewBag.JsN);
+    $(document).ready(function () {
+        setupSelect('UniversityId', 'ExamScheduleElementId',"Button", @Html.Raw(Json.Serialize(ViewBag.ExamScheduleElements)));
+    });
+</script>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

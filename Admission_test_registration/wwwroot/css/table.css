@@ -1,0 +1,20 @@
+﻿
+table {
+    font-size: 24px;
+    border-collapse: separate;
+}
+
+th, td {
+    border: 2px solid #050202;
+}
+
+tr:nth-child(even) {
+    background: #f98a8a;
+}
+
+tr:nth-child(odd) {
+    background: #ddff39;
+}
+.moreInfoLink {
+    font-size: 16px;
+}
