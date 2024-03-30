@@ -8,7 +8,7 @@ function initializeMap(universities) {
     universities.forEach(function (university) {
         var popupContent = '<i>' + university.name + '</i><hr />' +
             '<strong>Adress:</strong> ' + university.adress + '<hr />' +
-            '<ul><li><strong>_Exam Shedule_</strong></li>';
+            '<ul><li><strong>_Exam Sсhedule_</strong></li>';
         university.examScheduleElements.forEach(function (elem) {
             popupContent += '<li>' + elem.examTime.substring(0, elem.examTime.lastIndexOf(":")) + '</li>';
         });
